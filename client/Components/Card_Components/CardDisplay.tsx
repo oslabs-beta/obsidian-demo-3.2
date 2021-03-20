@@ -17,7 +17,7 @@ declare global {
   }
 }
 const CardDisplay = (props: any) => {
-  const allMoviesQuery = `query { 
+  const allMoviesQuery = `query {
     movies {
       id
       title
@@ -47,6 +47,7 @@ const CardDisplay = (props: any) => {
     const handleChange = (event: any) => {
       setValue(event.target.value);
     };
+    debugger
     const handleSubmit = async (e: any) => {
       e.preventDefault();
       const associateActorWithMovie = `

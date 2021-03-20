@@ -59,13 +59,14 @@ router.get('/', (ctx: any) => {
 });
 
 // Bundle hydrated app
-const [_, clientJS] = await Deno.bundle('./client/client.tsx');
-
+const {files , diagnostics} = await Deno.emit('./client/client.tsx', {
+  bundle: "esm",
+});
 // Router for serving bundle
 const bundleRouter = new Router();
 bundleRouter.get('/static/client.js', (context) => {
   context.response.headers.set('Content-Type', 'text/html');
-  context.response.body = clientJS;
+  context.response.body = files['deno:///bundle.js'];
 });
 
 // Attach routes
@@ -77,7 +78,6 @@ app.use(router.allowedMethods());
 interface ObsRouter extends Router {
   obsidianSchema?: any;
 }
-
 // Create GraphQL Router
 const GraphQLRouter = await ObsidianRouter<ObsRouter>({
   Router,
@@ -85,7 +85,6 @@ const GraphQLRouter = await ObsidianRouter<ObsRouter>({
   resolvers: resolvers,
   redisPort: 6379,
 });
-
 app.use(GraphQLRouter.routes(), GraphQLRouter.allowedMethods());
 
 app.addEventListener('listen', () => {

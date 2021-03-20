@@ -1,9 +1,11 @@
 {
   "$schema": "https://deno.land/x/denon/schema.json",
+  "watch": true,
   "scripts": {
     "start": {
       "cmd": "deno run --allow-env --allow-net --allow-read --unstable new-server.tsx -c tsconfig.json",
-      "desc": "run my run --allow-env --allow-net --allow-read --unstable new-server.tsx -c tsconfig.json file"
+      "desc": "run my run --allow-env --allow-net --allow-read --unstable new-server.tsx -c tsconfig.json file",
+      "watch": true
     }
   }
 }

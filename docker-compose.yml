@@ -8,6 +8,13 @@ services:
     volumes:
       - ./:/usr/app
     command: deno run --allow-net --allow-read --allow-env --unstable new-server.tsx
+    environment:
+      - REDIS_HOST=redis
+      - PG_PORT=5432
+      - PG_USER=uiikgqgj
+      - PG_DATABASE=uiikgqgj
+      - PG_PASSWORD=cSjcLEFvsuAb7Q3bc6O5p2LYbyjWlw5t
+      - PG_HOSTNAME=suleiman.db.elephantsql.com
     depends_on:
       - redis-db
   redis-db:
@@ -16,6 +23,8 @@ services:
     ports:
       - '6379:6379'
     hostname: redis
+    expose:
+      - 6379
     command: ['redis-server', '--bind', '0.0.0.0', '--port', '6379']
     volumes:
       - dev-redis-volume:/var/lib/redis/data
