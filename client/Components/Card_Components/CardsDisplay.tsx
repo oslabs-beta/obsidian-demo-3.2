@@ -24,7 +24,8 @@ const CardsDisplay = (props: any) => {
     let resp = props.cardsResponse;
     const arrOfActors = props.actorResponse.actors;
     const actorList: any = {};
-    console.log('resp',resp)
+    // console.log('arrActors', arrOfActors)
+    // console.log('resp',resp)
     arrOfActors.forEach((actor: any) => {
       let output = actor.firstName + ' ' + actor.lastName;
       actorList[output] = actor.id;

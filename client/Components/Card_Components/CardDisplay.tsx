@@ -47,7 +47,7 @@ const CardDisplay = (props: any) => {
     const handleChange = (event: any) => {
       setValue(event.target.value);
     };
-    debugger
+
     const handleSubmit = async (e: any) => {
       e.preventDefault();
       const associateActorWithMovie = `

@@ -40,17 +40,17 @@ const resolvers = {
           args: [],
         });
         client.release();
-        console.log(result)
+        // console.log(result)
         let resObj = result.rows.map((arr) => {
-          console.log('yekljdfl',arr)
+          // console.log('yekljdfl',arr)
           return {
             id: arr.id,
-            title: arr[1],
-            genre: arr[2],
-            releaseYear: arr[3],
+            title: arr.title,
+            genre: arr.genre,
+            releaseYear: arr.release_dt,
           };
         });
-        await console.log('resObj1', resObj)
+        // await console.log('resObj1', resObj)
         if (input) {
           if (input.genre) {
             resObj = resObj.filter((obj : any) => obj.genre === input.genre);
@@ -81,7 +81,6 @@ const resolvers = {
             }
           }
         }
-        console.log('resObj Final', resObj)
         return resObj;
       } catch (err) {
         console.log(err);
@@ -100,10 +99,10 @@ const resolvers = {
         client.release();
         let resObj = result.rows.map((arr) => {
           return {
-            id: arr[0],
-            firstName: arr[1],
-            lastName: arr[2],
-            nickname: arr[3],
+            id: arr.id,
+            firstName: arr.first_name,
+            lastName: arr.last_name,
+            nickname: arr.nickname,
           };
         });
         if (input) {
@@ -157,10 +156,10 @@ const resolvers = {
         client.release();
         let resObj = result.rows.map((arr) => {
           return {
-            id: arr[0],
-            firstName: arr[1],
-            lastName: arr[2],
-            nickname: arr[3],
+            id: arr.id,
+            firstName: arr.first_name,
+            lastName: arr.last_name,
+            nickname: arr.nickname,
           };
         });
         return resObj;
@@ -191,10 +190,10 @@ const resolvers = {
         client.release();
         let resObj = result.rows.map((arr) => {
           return {
-            id: arr[0],
-            title: arr[1],
-            genre: arr[2],
-            releaseYear: arr[3],
+            id: arr.id,
+            title: arr.title,
+            genre: arr.genre,
+            releaseYear: arr.release_dt,
           };
         });
         return resObj;
@@ -237,10 +236,10 @@ const resolvers = {
         client.release();
         const newMovieArr = result.rows[0];
         const newMovieObj = {
-          id: newMovieArr[0],
-          title: newMovieArr[1],
-          genre: newMovieArr[2],
-          releaseYear: newMovieArr[3],
+          id: newMovieArr.id,
+          title: newMovieArr.title,
+          genre: newMovieArr.genre,
+          releaseYear: newMovieArr.release_dt,
         };
         return newMovieObj;
       } catch (err) {
@@ -264,10 +263,10 @@ const resolvers = {
         client.release();
         const deletedMovieArr = result.rows[0];
         const deletedMovieObj = {
-          id: deletedMovieArr[0],
-          title: deletedMovieArr[1],
-          genre: deletedMovieArr[2],
-          releaseYear: deletedMovieArr[3],
+          id: deletedMovieArr.id,
+          title: deletedMovieArr.title,
+          genre: deletedMovieArr.genere,
+          releaseYear: deletedMovieArr.release_dt,
         };
         return deletedMovieObj;
       } catch (err) {
@@ -296,10 +295,10 @@ const resolvers = {
         client.release();
         const newActorArr = result.rows[0];
         const newActorObj = {
-          id: newActorArr[0],
-          firstName: newActorArr[1],
-          lastName: newActorArr[2],
-          nickname: newActorArr[3],
+          id: newActorArr.id,
+          firstName: newActorArr.first_name,
+          lastName: newActorArr.last_name,
+          nickname: newActorArr.nickname,
         };
         return newActorObj;
       } catch (err) {
@@ -323,10 +322,10 @@ const resolvers = {
         client.release();
         const deletedActorArr = result.rows[0];
         const deletedActorObj = {
-          id: deletedActorArr[0],
-          firstName: deletedActorArr[1],
-          lastName: deletedActorArr[2],
-          nickname: deletedActorArr[3],
+          id: deletedActorArr.id,
+          firstName: deletedActorArr.first_name,
+          lastName: deletedActorArr.last_name,
+          nickname: deletedActorArr.nickname,
         };
         return deletedActorObj;
       } catch (err) {
@@ -354,10 +353,10 @@ const resolvers = {
         client.release();
         const updatedActorArr = result.rows[0];
         const updatedActorObj = {
-          id: updatedActorArr[0],
-          firstName: updatedActorArr[1],
-          lastName: updatedActorArr[2],
-          nickname: updatedActorArr[3],
+          id: updatedActorArr.id,
+          firstName: updatedActorArr.first_name,
+          lastName: updatedActorArr.last_name,
+          nickname: updatedActorArr.nickname,
         };
         return updatedActorObj;
       } catch (err) {
@@ -395,10 +394,10 @@ const resolvers = {
           client.release();
           const MovieArr = result.rows[0];
           const MovieObj = {
-            id: MovieArr[0],
-            title: MovieArr[1],
-            genre: MovieArr[2],
-            releaseYear: MovieArr[3],
+            id: MovieArr.id,
+            title: MovieArr.title,
+            genre: MovieArr.genre,
+            releaseYear: MovieArr.release_dt,
           };
           return MovieObj;
         } else {
@@ -413,10 +412,10 @@ const resolvers = {
           client.release();
           const ActorArr = result.rows[0];
           const ActorObj = {
-            id: ActorArr[0],
-            firstName: ActorArr[1],
-            lastName: ActorArr[2],
-            nickname: ActorArr[3],
+            id: ActorArr.id,
+            firstName: ActorArr.first_name,
+            lastName: ActorArr.last_name,
+            nickname: ActorArr.nickname,
           };
           return ActorObj;
         }
