@@ -24,15 +24,30 @@ const QueryDisplay = (props: any) => {
 
   return (
     <>
-      <div className="query-display">
+      <div className="flex flex-row">
         <h3>Make a query</h3>
-        <button type="button" id="fetchAllMovies" onClick={props.allMovies}>
+        <button
+          type="button"
+          id="fetchAllMovies"
+          onClick={props.allMovies}
+          className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+        >
           All Movies
         </button>
-        <button type="button" id="fetchAllActors" onClick={props.allActors}>
+        <button
+          type="button"
+          id="fetchAllActors"
+          onClick={props.allActors}
+          className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+        >
           All Actors
         </button>
-        <button type="button" id="fetchByYear" onClick={props.byYear}>
+        <button
+          type="button"
+          id="fetchByYear"
+          onClick={props.byYear}
+          className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+        >
           Movies by Release Year
         </button>
 

@@ -19,11 +19,16 @@ const Dashboard = (props: any) => {
   const { query, cache, setCache, clearCache } = useObsidian();
   return (
     // <CardsContainer>
+    <>
     <div>
       <h2 style={{ color: '#e83e8c', textAlign: 'center' }}>Dashboard</h2>
+
       <TimerQueryDisplay queryTime={queryTime} gqlRequest={gqlRequest} />
+    </div>
+    <div>
       <CacheResponseDisplay dashResponse={dashResponse} />
     </div>
+    </>
     /* </CardsContainer> */
   );
 };

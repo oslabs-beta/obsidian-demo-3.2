@@ -16,9 +16,9 @@ declare global {
 
 const MutationDisplay = (props: any) => {
   return (
-    <div className="mutation-display">
+    <div className="flex flex-col">
       <h3>Make a mutation</h3>
-      <form className="create-movieCard" onSubmit={props.addMovieCard}>
+      <form className="flex flex-row" onSubmit={props.addMovieCard}>
         <h5>Enter your movie details</h5>
         <div className="createCharFields">
           <label className="form-label" htmlFor="title">
@@ -61,10 +61,12 @@ const MutationDisplay = (props: any) => {
             <option value="ADVENTURE">ADVENTURE</option>
           </select>
         </div>
-        <button>Add Movie</button>
+        <button className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+          Add Movie
+        </button>
       </form>
 
-      <form className="create-movieCard" onSubmit={props.addActorCard}>
+      <form className="flex flex-row" onSubmit={props.addActorCard}>
         <h5>Enter your actor details</h5>
         <div className="createCharFields">
           <label className="form-label" htmlFor="firstName">
@@ -105,7 +107,9 @@ const MutationDisplay = (props: any) => {
             onChange={props.onChange}
           />
         </div>
-        <button>Add Actor</button>
+        <button className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+          Add Actor
+        </button>
       </form>
     </div>
   );

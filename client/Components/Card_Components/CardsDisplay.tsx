@@ -15,11 +15,11 @@ const CardsDisplay = (props: any) => {
   const cards: any = [];
 
   if (!Object.keys(cache.storage.ROOT_QUERY).length) {
-    return (
-      <div id="no-data">
-        <h1> Fetch some data... </h1>
-      </div>
-    );
+    // return (
+    //   // <div id="no-data">
+    //   //   <h1> Fetch some data... </h1>
+    //   // </div>
+    // );
   } else if (props.display === 'all movies') {
     let resp = props.cardsResponse;
     const arrOfActors = props.actorResponse.actors;

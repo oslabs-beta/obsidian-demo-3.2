@@ -40,7 +40,8 @@ router.get('/', (ctx: any) => {
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
         <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
-        <link href="/static/prism.css" rel="stylesheet" />
+        <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+
         <link rel="stylesheet" href="/static/style.css">
         <link
     rel="stylesheet"
@@ -48,8 +49,9 @@ router.get('/', (ctx: any) => {
     />
         <title>Obsidian</title>
       </head>
-      <body >
-        <div id="root">${body}</div>
+      <body class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 bg-gray-200" >
+        <div  id="root">${body}</div>
+
         <script  src="/static/client.js" defer></script>
       </body>
       </html>`;
@@ -59,8 +61,8 @@ router.get('/', (ctx: any) => {
 });
 
 // Bundle hydrated app
-const {files , diagnostics} = await Deno.emit('./client/client.tsx', {
-  bundle: "esm",
+const { files, diagnostics } = await Deno.emit('./client/client.tsx', {
+  bundle: 'esm',
 });
 // Router for serving bundle
 const bundleRouter = new Router();

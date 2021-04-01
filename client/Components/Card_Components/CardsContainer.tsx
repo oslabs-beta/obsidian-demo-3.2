@@ -2,7 +2,7 @@ import { React, useObsidian, BrowserCache } from '../../../deps.ts';
 import CardsDisplay from './CardsDisplay.tsx';
 import QueryDisplay from './QueryDisplay.tsx';
 import MutationDisplay from './MutationDisplay.tsx';
-import Dashboard from '../Dashboard/Dashboard.tsx';
+import DashboardContainer from '../Dashboard/DashboardContainer.tsx';
 
 declare global {
   namespace JSX {
@@ -55,7 +55,7 @@ function CardsContainer(props: any) {
     setState((prevState: any) => ({ ...prevState, [name]: value }));
   };
 
-  const allMoviesQuery = `query { 
+  const allMoviesQuery = `query {
       movies {
         id
         __typename
@@ -136,7 +136,7 @@ function CardsContainer(props: any) {
         lastName
       }
     }
-   
+
   }
   `;
 
@@ -320,9 +320,8 @@ function CardsContainer(props: any) {
   };
 
   return (
-    <div id="cardsContainer">
-      <div id="query-mutation">
-        <h2>Requests</h2>
+    <div className = "flex flex-col" >
+      <div className="flex flex-col"id="query-mutation">
         <QueryDisplay
           id="query-display"
           allMovies={fetchAllMovies}
@@ -346,7 +345,14 @@ function CardsContainer(props: any) {
           onChange={onChange}
         />
       </div>
-      <div id="cards-display">
+      <div>
+      <DashboardContainer
+        queryTime={queryTime}
+        gqlRequest={gqlRequest}
+        dashResponse={dashResponse}
+      />
+      </div>
+      <div>
         <CardsDisplay
           display={display}
           setDisplay={setDisplay}
@@ -358,12 +364,7 @@ function CardsContainer(props: any) {
           cardsResponse={cardsResponse}
         />
       </div>
-      <Dashboard
-        id="dashboard"
-        queryTime={queryTime}
-        gqlRequest={gqlRequest}
-        dashResponse={dashResponse}
-      />
+
     </div>
   );
 }
