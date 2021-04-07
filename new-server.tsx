@@ -49,7 +49,7 @@ router.get('/', (ctx: any) => {
     />
         <title>Obsidian</title>
       </head>
-      <body class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 bg-gray-200" >
+      <body class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 bg-gray-900" >
         <div  id="root">${body}</div>
 
         <script  src="/static/client.js" defer></script>

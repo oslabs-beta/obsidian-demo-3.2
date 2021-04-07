@@ -65,19 +65,34 @@ const CacheDisplay = (props: any) => {
   const cachedPair = createCache();
 
   return (
-    <div className="w-11/12 h-full bg-black overflow-auto shadow rounded-xl m-4">
-      <div className="px-4 py-5 sm:p-6">
-        <pre className="pre-block" id="cacheDisplay">
-          Cache:
-          <code className="text-pink-600">
-            {'{'}
-            {cachedPair}
-            {'}'}
-          </code>
-          <button type="button" id="clear-cache" onClick={onClick}>
-            Clear Cache
-          </button>
-        </pre>
+    <div className="w-11/12 bg-black shadow border overflow-x-hidden rounded-xl m-4">
+      <div className="w-max h-full rounded-xl overflow-auto">
+        <div className="px-4 py-3 sm:p-6">
+          <pre className="flex flex-column overflow-hidden text-white">
+            <div className="flex flex-row justify-between">
+              <div>Cache:</div>
+              <button
+                type="button"
+                className="content-center bg-transparent  text-indigo-700 hover:text-indigo-800 focus:outline-none"
+                onClick={onClick}
+              >
+                Clear Cache
+              </button>
+            </div>
+            <code className="text-pink-600">
+              {'{'}
+              {cachedPair}
+              {'}'}
+            </code>
+            <button
+              type="button"
+              className="content-center px-4 py-2 border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-800 hover:bg-indigo-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
+              onClick={onClick}
+            >
+              Clear Cache
+            </button>
+          </pre>
+        </div>
       </div>
     </div>
   );

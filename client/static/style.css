@@ -1,3 +1,24 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .h-278 {
+    background-color: rgba(255, 255, 255, var(--tw-bg-opacity));
+  }
+}
+
+.h-boxes{
+  height: 500px;
+
+}
+.w-cards{
+  width:380px;
+}
+.text-wrap{
+word-wrap: break-word;
+}
+
 /* .app, */
 /* #root { */
   /* font-size: 14px; */
@@ -805,7 +826,7 @@ pre {
 
   .navBarGitLink {
     margin-left: 7%; */
-  }
+
 
   /* .navBarGitLink,
   .navBarDenoLink {
@@ -833,3 +854,12 @@ pre {
       rotateY(calc(-0deg * var(--dir)));
   } */
 }
+.saturate { filter: saturate(3); }
+.grayscale { filter: grayscale(100%); }
+.contrast { filter: contrast(160%); }
+.brightness { filter: brightness(0.25); }
+.blur { filter: blur(3px); }
+.invert { filter: invert(100%); }
+.sepia { filter: sepia(100%); }
+.huerotate { filter: hue-rotate(180deg); }
+.rss.opacity { filter: opacity(50%); }

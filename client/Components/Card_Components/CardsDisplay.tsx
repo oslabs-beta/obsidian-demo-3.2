@@ -47,7 +47,12 @@ const CardsDisplay = (props: any) => {
       );
     });
 
-    return [cards];
+    return (
+      <>
+        <div className="w-full border-t my-3"></div>
+        {[cards]};
+      </>
+    );
   } else if (props.display === 'all actors') {
     let resp = props.cardsResponse;
     const arrOfMovies = props.movieResponse.movies;

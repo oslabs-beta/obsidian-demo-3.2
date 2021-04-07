@@ -20,14 +20,14 @@ const Dashboard = (props: any) => {
   return (
     // <CardsContainer>
     <>
-    <div>
-      <h2 style={{ color: '#e83e8c', textAlign: 'center' }}>Dashboard</h2>
+      <div>
+        <h2 style={{ color: '#e83e8c', textAlign: 'center' }}>Dashboard</h2>
 
-      <TimerQueryDisplay queryTime={queryTime} gqlRequest={gqlRequest} />
-    </div>
-    <div>
-      <CacheResponseDisplay dashResponse={dashResponse} />
-    </div>
+        <TimerQueryDisplay queryTime={queryTime} gqlRequest={gqlRequest} />
+      </div>
+      <div>
+        <CacheResponseDisplay dashResponse={dashResponse} />
+      </div>
     </>
     /* </CardsContainer> */
   );

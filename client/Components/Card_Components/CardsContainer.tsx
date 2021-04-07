@@ -36,7 +36,7 @@ function CardsContainer(props: any) {
   const [dashResponse, setDashResponse] = (React as any).useState('');
   const [cardsResponse, setCardsResponse] = (React as any).useState('');
   const [display, setDisplay] = (React as any).useState('');
-  const [genre, setGenre] = useInput('');
+  const [genre, setGenre] = (React as any).useState('');
   const [cardGenre, setCardGenre] = useInput('');
   const [actorResponse, setActorResponse] = (React as any).useState('');
   const [movieResponse, setMovieResponse] = (React as any).useState('');
@@ -54,8 +54,8 @@ function CardsContainer(props: any) {
     const { name, value } = e.target;
     setState((prevState: any) => ({ ...prevState, [name]: value }));
   };
-
-  const allMoviesQuery = `query {
+  const allQueries = {
+    allMoviesQuery: `query {
       movies {
         id
         __typename
@@ -70,9 +70,9 @@ function CardsContainer(props: any) {
         genre
       }
     }
-  `;
+  `,
 
-  const allActorsQuery = `query {
+    allActorsQuery: `query {
       actors {
         id
         __typename
@@ -88,9 +88,9 @@ function CardsContainer(props: any) {
         }
       }
     }
-  `;
+  `,
 
-  const allMoviesByGenre = `query {
+    allMoviesByGenre: `query {
       movies(input: {genre: ${genre}}){
         id
         __typename
@@ -105,9 +105,9 @@ function CardsContainer(props: any) {
         }
       }
     }
-  `;
+  `,
 
-  const moviesByReleaseYear = `query {
+    moviesByReleaseYear: `query {
     movies(input: {order : ASC }) {
       id
       __typename
@@ -122,9 +122,9 @@ function CardsContainer(props: any) {
       genre
     }
 }
-  `;
+  `,
 
-  const addMovie = `mutation {
+    addMovie: `mutation {
     addMovie(input: {title: "${title}", releaseYear: ${releaseYear}, genre: ${cardGenre} }) {
       id
       title
@@ -138,9 +138,9 @@ function CardsContainer(props: any) {
     }
 
   }
-  `;
+  `,
 
-  const addActor = `mutation {
+    addActor: `mutation {
     addActor(input: {firstName: "${firstName}", lastName: "${lastName}", nickname: "${nickname}" }) {
       id
       firstName
@@ -154,7 +154,17 @@ function CardsContainer(props: any) {
       }
     }
   }
-  `;
+  `,
+  };
+
+  const {
+    allMoviesQuery,
+    allActorsQuery,
+    allMoviesByGenre,
+    moviesByReleaseYear,
+    addMovie,
+    addActor,
+  } = allQueries;
 
   const fetchAllMovies = async (e: any) => {
     setGqlRequest(allMoviesQuery);
@@ -320,8 +330,8 @@ function CardsContainer(props: any) {
   };
 
   return (
-    <div className = "flex flex-col" >
-      <div className="flex flex-col"id="query-mutation">
+    <div className="flex flex-col ">
+      <div className="flex flex-row justify-around mt-3">
         <QueryDisplay
           id="query-display"
           allMovies={fetchAllMovies}
@@ -330,6 +340,8 @@ function CardsContainer(props: any) {
           byYear={fetchReleaseYear}
           genre={genre}
           setGenre={setGenre}
+          allQueries={allQueries}
+          setGqlRequest={setGqlRequest}
         />
         <MutationDisplay
           id="mutation-display"
@@ -345,14 +357,13 @@ function CardsContainer(props: any) {
           onChange={onChange}
         />
       </div>
-      <div>
+
       <DashboardContainer
         queryTime={queryTime}
         gqlRequest={gqlRequest}
         dashResponse={dashResponse}
       />
-      </div>
-      <div>
+      <div className="flex flex-row justify-center flex-wrap">
         <CardsDisplay
           display={display}
           setDisplay={setDisplay}
@@ -364,7 +375,6 @@ function CardsContainer(props: any) {
           cardsResponse={cardsResponse}
         />
       </div>
-
     </div>
   );
 }

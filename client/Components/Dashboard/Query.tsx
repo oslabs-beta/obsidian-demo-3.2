@@ -20,11 +20,11 @@ const Query = (props: any) => {
   const { gqlRequest } = props;
 
   return (
-    <div className="w-11/12 h-11/12 bg-black overflow-hidden shadow rounded-xl m-4">
-      <div className="px-4 py-5 sm:p-6">
-        <pre className="text-indigo-600">
+    <div className="w-11/12 bg-black border shadow rounded-xl m-4">
+      <div className=" px-4 py-3 sm:p-6">
+        <pre className=" flex flex-column text-white">
           Query:
-          <code className="text-indigo-500">{gqlRequest}</code>
+          <code className="text-green-500">{gqlRequest}</code>
         </pre>
       </div>
     </div>

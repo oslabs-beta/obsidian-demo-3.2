@@ -21,8 +21,8 @@ const Timer = (props: any) => {
 
   return (
     <div className="timer-query">
-      <div className="timer">
-        <code>{`Request Timer ${queryTime}ms`}</code>
+      <div>
+        <code className="text-red-600">{`Request Timer ${queryTime}ms`}</code>
       </div>
     </div>
   );

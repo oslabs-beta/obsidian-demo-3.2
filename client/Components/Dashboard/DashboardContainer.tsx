@@ -1,5 +1,5 @@
 import { React, useObsidian } from '../../../deps.ts';
-import CacheResponseDisplay from './CacheResponse&Display.tsx';
+import Response from './Response.tsx';
 import Performance from './Performance.tsx';
 import Query from './Query.tsx';
 import CacheDisplay from './CacheDisplay.tsx';
@@ -17,17 +17,15 @@ declare global {
 }
 const DashboardContainer = (props: any) => {
   const { queryTime, gqlRequest, dashResponse } = props;
-  const { query, cache, setCache, clearCache } = useObsidian();
   return (
-    <div className="flex flex-row h-96">
-      <div className="flex flex-col items-center w-1/2 h-96 bg-gray-500">
+    <div className="flex flex-col">
+      <div className="flex flex-row items-center w-full h-boxes items-stretch">
         <Query gqlRequest={gqlRequest} />
         <Performance queryTime={queryTime} />
       </div>
-      <div className="flex flex-col items-center w-1/2 h-96  bg-gray-300">
+      <div className="flex flex-row items-center w-full h-boxes items-stretch">
         <CacheDisplay dashResponse={dashResponse} />
-        <Performance queryTime={queryTime} gqlRequest={gqlRequest} />
-        {/* <CacheResponseDisplay dashResponse={dashResponse} /> */}
+        <Response dashResponse={dashResponse} />
       </div>
     </div>
   );

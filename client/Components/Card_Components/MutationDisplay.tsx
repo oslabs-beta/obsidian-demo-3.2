@@ -16,101 +16,107 @@ declare global {
 
 const MutationDisplay = (props: any) => {
   return (
-    <div className="flex flex-col">
-      <h3>Make a mutation</h3>
-      <form className="flex flex-row" onSubmit={props.addMovieCard}>
-        <h5>Enter your movie details</h5>
-        <div className="createCharFields">
-          <label className="form-label" htmlFor="title">
-            Title{' '}
-          </label>
-          <input
-            className="form-control"
-            name="title"
-            value={props.title}
-            onChange={props.onChange}
-            required
-          />
-        </div>
-        <div className="createCharFields">
-          <label className="form-label" htmlFor="releaseYear">
-            Release Year{' '}
-          </label>
-          <input
-            className="form-control"
-            name="releaseYear"
-            value={props.releaseYear}
-            onChange={props.onChange}
-            required
-          />
-        </div>
-        <div className="createCharFields">
-          <select
-            className="form-select"
-            id="genres"
-            value={props.cardGenre}
-            onChange={props.setCardGenre}
-            required
+    <div
+      className="flex flex-row w-2/3
+    "
+    >
+      <div className="flex flex-col w-full">
+        <h3 className="text-white text-center text-lg">Make a mutation</h3>
+        <div className="flex flex-row justify-around">
+          <form
+            className="flex flex-col items-center h-full w-48 justify-around"
+            onSubmit={props.addMovieCard}
           >
-            <option value="">Select the genre</option>
-            <option value="ACTION">ACTION</option>
-            <option value="SCIFI">SCIFI</option>
-            <option value="DRAMA">DRAMA</option>
-            <option value="COMEDY">COMEDY</option>
-            <option value="ROMANCE">ROMANCE</option>
-            <option value="ADVENTURE">ADVENTURE</option>
-          </select>
-        </div>
-        <button className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-          Add Movie
-        </button>
-      </form>
+            <h5 className="text-white text-sm">Enter your movie details</h5>
 
-      <form className="flex flex-row" onSubmit={props.addActorCard}>
-        <h5>Enter your actor details</h5>
-        <div className="createCharFields">
-          <label className="form-label" htmlFor="firstName">
-            First Name{' '}
-          </label>
-          <input
-            className="form-control"
-            name="firstName"
-            value={props.firstName}
-            onChange={props.onChange}
-            required
-          />
-        </div>
-        <div className="createCharFields">
-          <label
-            className="form-label"
-            htmlFor="las
-        tName"
+            <label className="sr-only" htmlFor="title"></label>
+            <input
+              className="shadow-sm m-1 p-1 w-full focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
+              name="title"
+              value={props.title}
+              onChange={props.onChange}
+              placeholder="Title"
+              required
+            />
+
+            <label className="sr-only" htmlFor="releaseYear"></label>
+            <input
+              className="shadow-sm m-1 p-1  w-full focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
+              name="releaseYear"
+              value={props.releaseYear}
+              onChange={props.onChange}
+              placeholder="Release Year"
+              required
+            />
+
+            <select
+              className="m-1 p-1 block w-full pr-4 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
+              id="genres"
+              value={props.cardGenre}
+              onChange={props.setCardGenre}
+              required
+            >
+              <option className="text-gray-500 bg-blue-500" value="">
+                Select the genre
+              </option>
+              <option value="ACTION">ACTION</option>
+              <option value="SCIFI">SCIFI</option>
+              <option value="DRAMA">DRAMA</option>
+              <option value="COMEDY">COMEDY</option>
+              <option value="ROMANCE">ROMANCE</option>
+              <option value="ADVENTURE">ADVENTURE</option>
+            </select>
+
+            <button className="p-1 m-1 w-full border-transparent text-sm text-center font-medium rounded-md shadow-sm text-white bg-yellow-600 hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500">
+              Add Movie
+            </button>
+          </form>
+
+          <form
+            className="flex flex-col h-full w-48 justify-around"
+            onSubmit={props.addActorCard}
           >
-            Last Name
-          </label>
-          <input
-            className="form-control"
-            name="lastName"
-            value={props.lastName}
-            onChange={props.onChange}
-            required
-          />
+            <h5 className="text-white text-sm">Enter your actor details</h5>
+
+            <label className="sr-only" htmlFor="firstName"></label>
+            <input
+              className="shadow-sm m-1 p-1 w-full focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
+              name="firstName"
+              value={props.firstName}
+              onChange={props.onChange}
+              placeholder="First Name"
+              required
+            />
+
+            <label
+              className="sr-only"
+              htmlFor="las
+        tName"
+            ></label>
+            <input
+              className="shadow-sm m-1 p-1 w-full focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
+              name="lastName"
+              value={props.lastName}
+              onChange={props.onChange}
+              placeholder="Last Name"
+              required
+            />
+
+            <label className="sr-only" htmlFor="nickname"></label>
+            <input
+              className="shadow-sm m-1 p-1 w-full focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
+              name="nickname"
+              value={props.nickname}
+              onChange={props.onChange}
+              placeholder="Nickname"
+            />
+
+            <button className="p-1 m-1 w-full border-transparent text-sm text-center font-medium rounded-md shadow-sm text-white bg-yellow-600 hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500">
+              Add Actor
+            </button>
+          </form>
         </div>
-        <div className="createCharFields">
-          <label className="form-label" htmlFor="nickname">
-            Nickname{' '}
-          </label>
-          <input
-            className="form-control"
-            name="nickname"
-            value={props.nickname}
-            onChange={props.onChange}
-          />
-        </div>
-        <button className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-          Add Actor
-        </button>
-      </form>
+      </div>
     </div>
   );
 };

@@ -9,20 +9,33 @@ declare global {
       article: any;
       h3: any;
       h5: any;
+      svg: any;
+      path: any;
+      rect: any;
+      img: any;
     }
   }
 }
 
 const Header = (props: any) => {
   return (
-    <div className="pb-5 border-b border-gray-200 mt-10 mb-5">
-      <h3 className="text-xl leading-6 font-medium text-gray-100 pt-3">
-        Obsidian Demo
-      </h3>
-      <p className="mt-2 max-w-4xl text-sm text-gray-400">
-        Use the below mock app to test the functionality and performance of
-        Obsidian!
-      </p>
+    <div className="pb-2 border-gray-200 mt-10 flex flex-row justify-between items-center">
+      <div>
+        <h1 className="text-3xl leading-6 font-medium text-gray-300">
+          Obsidian Demonstration
+        </h1>
+        <p className="mt-2 max-w-4xl text-sm text-gray-400">
+          Use the below mock app to test the functionality and performance of
+          Obsidian!
+        </p>
+      </div>
+      <div>
+        <img
+          src="static/obs-no-title-trans.png"
+          width="175"
+          className="grayscale"
+        ></img>
+      </div>
     </div>
   );
 };

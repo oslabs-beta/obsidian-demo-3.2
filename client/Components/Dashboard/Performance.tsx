@@ -31,8 +31,9 @@ const Performance = (props: any) => {
 `;
   return (
     <>
-      <div className="w-11/12 h-11/12 bg-black overflow-hidden shadow rounded-xl m-4">
-        <div className="px-4 py-5 sm:p-6">
+      <div className="w-11/12 bg-black border overflow-hidden shadow rounded-xl m-4">
+        <div className="flex flex-column px-4 py-3 sm:p-6 text-white">
+          Performance:
           <Timer queryTime={queryTime} gqlRequest={gqlRequest} />
         </div>
       </div>

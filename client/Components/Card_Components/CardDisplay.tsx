@@ -100,44 +100,49 @@ const CardDisplay = (props: any) => {
       );
     });
     return (
-      <article className="card movieCard" id={props.id}>
-        <div className="movieHeadContainer">
-          <h4 className="movieTitle">{title}</h4>
+      <article
+        className="bg-gray-400 w-cards m-1 overflow-hidden shadow sm:rounded-lg"
+        id={props.id}
+      >
+        <div className="px-4 py-5 sm:p-6">
+          <div className="movieHeadContainer">
+            <h4 className="movieTitle">{title}</h4>
+          </div>
+          <ul className="list-group">
+            <li className="list-group-item">
+              {' '}
+              <span>Release Year:</span> {releaseYear}
+            </li>
+            <li className="list-group-item">
+              {' '}
+              <span>Actors: </span>
+              {outputActor}
+            </li>
+            <li className="list-group-item">
+              {' '}
+              <span> Genre: </span>
+              {genre}
+            </li>
+          </ul>
+          <form onSubmit={handleSubmit}>
+            <label>Add Actor </label> <br />
+            <select
+              className="form-select"
+              required
+              value={value}
+              onChange={handleChange}
+            >
+              <option value="">Select</option>
+              {arrOfOptions}
+            </select>
+            <input
+              // className="btn btn-outline-secondary"
+              type="submit"
+              value="Submit"
+            />
+          </form>
+          <button onClick={deleteMovie}>Delete Movie</button>
         </div>
-        <ul className="list-group">
-          <li className="list-group-item">
-            {' '}
-            <span>Release Year:</span> {releaseYear}
-          </li>
-          <li className="list-group-item">
-            {' '}
-            <span>Actors: </span>
-            {outputActor}
-          </li>
-          <li className="list-group-item">
-            {' '}
-            <span> Genre: </span>
-            {genre}
-          </li>
-        </ul>
-        <form onSubmit={handleSubmit}>
-          <label>Add Actor </label> <br />
-          <select
-            className="form-select"
-            required
-            value={value}
-            onChange={handleChange}
-          >
-            <option value="">Select</option>
-            {arrOfOptions}
-          </select>
-          <input
-            // className="btn btn-outline-secondary"
-            type="submit"
-            value="Submit"
-          />
-        </form>
-        <button onClick={deleteMovie}>Delete Movie</button>
       </article>
     );
   } else if (props.display === 'Actors') {
@@ -234,53 +239,58 @@ const CardDisplay = (props: any) => {
       // props.setDisplay('all actors');
     };
     return (
-      <article className="card actorCard" id={props.id}>
-        <div className="actorHeadContainer">
-          <h4 className="actorName">{firstName + ' ' + lastName}</h4>
+      <article
+        className="bg-gray-400 w-max-1/3 m-1 overflow-hidden shadow sm:rounded-lg"
+        id={props.id}
+      >
+        <div className="px-4 py-5 sm:p-6">
+          <div className="actorHeadContainer">
+            <h4 className="actorName">{firstName + ' ' + lastName}</h4>
+          </div>
+          <ul className="list-group">
+            <li className="list-group-item">
+              {' '}
+              <span>Movies:</span> {outputMovie}
+            </li>
+            <li className="list-group-item">
+              {' '}
+              <span>Nickname:</span> {nickname}
+            </li>
+          </ul>
+          <form onSubmit={handleSubmitNickname}>
+            <label>Nickname: </label> <br />
+            <input
+              type="text"
+              value={valueNickname}
+              onChange={handleChangeNickname}
+            />
+            <input
+              className="btn btn-outline-secondary"
+              type="submit"
+              value="Submit"
+            />
+          </form>
+          <form onSubmit={handleSubmit} id={props.id}>
+            <label>
+              Add Movie <br />
+              <select
+                className="form-select"
+                required
+                value={valueMovie}
+                onChange={handleChange}
+              >
+                <option value="">Select</option>
+                {arrOfOptions}
+              </select>
+            </label>
+            <input
+              // className="btn btn-outline-secondary"
+              type="submit"
+              value="Submit"
+            />
+          </form>
+          <button onClick={deleteActor}>Delete Actor</button>
         </div>
-        <ul className="list-group">
-          <li className="list-group-item">
-            {' '}
-            <span>Movies:</span> {outputMovie}
-          </li>
-          <li className="list-group-item">
-            {' '}
-            <span>Nickname:</span> {nickname}
-          </li>
-        </ul>
-        <form onSubmit={handleSubmitNickname}>
-          <label>Nickname: </label> <br />
-          <input
-            type="text"
-            value={valueNickname}
-            onChange={handleChangeNickname}
-          />
-          <input
-            className="btn btn-outline-secondary"
-            type="submit"
-            value="Submit"
-          />
-        </form>
-        <form onSubmit={handleSubmit} id={props.id}>
-          <label>
-            Add Movie <br />
-            <select
-              className="form-select"
-              required
-              value={valueMovie}
-              onChange={handleChange}
-            >
-              <option value="">Select</option>
-              {arrOfOptions}
-            </select>
-          </label>
-          <input
-            // className="btn btn-outline-secondary"
-            type="submit"
-            value="Submit"
-          />
-        </form>
-        <button onClick={deleteActor}>Delete Actor</button>
       </article>
     );
   }
