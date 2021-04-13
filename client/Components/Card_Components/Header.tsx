@@ -21,10 +21,10 @@ const Header = (props: any) => {
   return (
     <div className="pb-2 border-gray-200 mt-10 flex flex-row justify-between items-center">
       <div>
-        <h1 className="text-3xl leading-6 font-medium text-gray-300">
+        <h1 className="text-4xl leading-6 font-medium text-gray-300">
           Obsidian Demonstration
         </h1>
-        <p className="mt-2 max-w-4xl text-sm text-gray-400">
+        <p className="mt-2 max-w-4xl text-md text-gray-400">
           Use the below mock app to test the functionality and performance of
           Obsidian!
         </p>

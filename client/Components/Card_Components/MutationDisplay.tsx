@@ -10,16 +10,17 @@ declare global {
       article: any;
       h3: any;
       h5: any;
+      label: any;
+      form: any;
+      select: any;
+      option: any;
     }
   }
 }
 
 const MutationDisplay = (props: any) => {
   return (
-    <div
-      className="flex flex-row w-2/3
-    "
-    >
+    <div className="flex flex-row w-2/3">
       <div className="flex flex-col w-full">
         <h3 className="text-white text-center text-lg">Make a mutation</h3>
         <div className="flex flex-row justify-around">
@@ -73,7 +74,7 @@ const MutationDisplay = (props: any) => {
           </form>
 
           <form
-            className="flex flex-col h-full w-48 justify-around"
+            className="flex flex-col h-full w-48 items-center justify-around"
             onSubmit={props.addActorCard}
           >
             <h5 className="text-white text-sm">Enter your actor details</h5>
@@ -88,11 +89,7 @@ const MutationDisplay = (props: any) => {
               required
             />
 
-            <label
-              className="sr-only"
-              htmlFor="las
-        tName"
-            ></label>
+            <label className="sr-only" htmlFor="lastName"></label>
             <input
               className="shadow-sm m-1 p-1 w-full focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
               name="lastName"

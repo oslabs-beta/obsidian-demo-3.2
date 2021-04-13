@@ -51,7 +51,7 @@ router.get('/', (ctx: any) => {
       </head>
       <body class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 bg-gray-900" >
         <div  id="root">${body}</div>
-
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
         <script  src="/static/client.js" defer></script>
       </body>
       </html>`;

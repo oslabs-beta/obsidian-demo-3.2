@@ -20,7 +20,7 @@ const Response = (props: any) => {
   const { dashResponse } = props;
 
   return (
-    <div className="w-11/12 bg-black border overflow-hidden shadow rounded-xl m-4">
+    <div className="w-11/12 bg-black border overflow-hidden shadow rounded-xl ml-2 mt-2 mr-4 mb-2">
       <div className="w-max h-full rounded-xl overflow-auto">
         <div className="px-4 py-3 sm:p-6">
           <pre className="flex flex-column max-w-full text-white">

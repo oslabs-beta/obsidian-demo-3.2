@@ -2,6 +2,7 @@ import React from 'https://dev.jspm.io/react';
 // import React from 'https://esm.sh/react';
 import ReactDOMServer from 'https://dev.jspm.io/react-dom/server';
 import ReactDom from 'https://dev.jspm.io/react-dom';
+import Chart from 'https://dev.jspm.io/chart.js';
 // import useEffect from 'https://dev.jspm.io/react';
 
 import {
@@ -27,4 +28,5 @@ export {
   CodeBlock,
   // useState,
   // useEffect,
+  Chart,
 };

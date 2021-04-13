@@ -65,7 +65,7 @@ const CacheDisplay = (props: any) => {
   const cachedPair = createCache();
 
   return (
-    <div className="w-11/12 bg-black shadow border overflow-x-hidden rounded-xl m-4">
+    <div className="w-11/12 bg-black shadow border overflow-x-hidden rounded-xl ml-4 mt-2 mr-2 mb-2">
       <div className="w-max h-full rounded-xl overflow-auto">
         <div className="px-4 py-3 sm:p-6">
           <pre className="flex flex-column overflow-hidden text-white">
@@ -79,7 +79,7 @@ const CacheDisplay = (props: any) => {
                 Clear Cache
               </button>
             </div>
-            <code className="text-pink-600">
+            <code className="text-wrap text-pink-600">
               {'{'}
               {cachedPair}
               {'}'}

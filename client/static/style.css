@@ -18,6 +18,13 @@
 .text-wrap{
 word-wrap: break-word;
 }
+.text-wrap-normal{
+  word-wrap: normal;
+  }
+
+.w-maxcontent{
+  width: max-content
+}
 
 /* .app, */
 /* #root { */

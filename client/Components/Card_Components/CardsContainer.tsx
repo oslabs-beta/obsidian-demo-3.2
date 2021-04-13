@@ -331,7 +331,7 @@ function CardsContainer(props: any) {
 
   return (
     <div className="flex flex-col ">
-      <div className="flex flex-row justify-around mt-3">
+      <div className="flex flex-row justify-around mt-2">
         <QueryDisplay
           id="query-display"
           allMovies={fetchAllMovies}

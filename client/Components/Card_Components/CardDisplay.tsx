@@ -52,7 +52,7 @@ const CardDisplay = (props: any) => {
       e.preventDefault();
       const associateActorWithMovie = `
         mutation {
-          associateActorWithMovie (input:{actorId:${props.actorList[value]}, movieId:${e.target.parentNode.id}, respType:MOVIE}){
+          associateActorWithMovie (input:{actorId:${props.actorList[value]}, movieId:${e.target.parentNode.parentNode.id}, respType:MOVIE}){
             ... on Movie{
               id
               actors {
@@ -75,11 +75,12 @@ const CardDisplay = (props: any) => {
       props.setCardsResponse(newResponse.data);
     };
     const deleteMovie = async (e: any) => {
-      const deleteMovieMutation = `mutation {deleteMovie(id:${e.target.parentNode.id}){
+      const deleteMovieMutation = `mutation {deleteMovie(id:${e.target.parentNode.parentNode.id}){
             id
             title
           }
           }`;
+      console.log(e);
       await mutate(deleteMovieMutation, { toDelete: true });
       await setCache(new BrowserCache(cache.storage));
       const newResponse = await query(allMoviesQuery);
@@ -240,7 +241,7 @@ const CardDisplay = (props: any) => {
     };
     return (
       <article
-        className="bg-gray-400 w-max-1/3 m-1 overflow-hidden shadow sm:rounded-lg"
+        className="bg-gray-400 w-cards m-1 overflow-hidden shadow sm:rounded-lg"
         id={props.id}
       >
         <div className="px-4 py-5 sm:p-6">

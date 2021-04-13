@@ -31,7 +31,7 @@ const Performance = (props: any) => {
 `;
   return (
     <>
-      <div className="w-11/12 bg-black border overflow-hidden shadow rounded-xl m-4">
+      <div className="w-11/12 bg-black border overflow-hidden shadow rounded-xl ml-2 mt-4 mr-4 mb-2">
         <div className="flex flex-column px-4 py-3 sm:p-6 text-white">
           Performance:
           <Timer queryTime={queryTime} gqlRequest={gqlRequest} />
