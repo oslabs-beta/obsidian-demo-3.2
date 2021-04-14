@@ -102,47 +102,61 @@ const CardDisplay = (props: any) => {
     });
     return (
       <article
-        className="bg-gray-400 w-cards m-1 overflow-hidden shadow sm:rounded-lg"
+        className="bg-gray-600 w-cards h-cards border m-1 overflow-hidden shadow sm:rounded-lg"
         id={props.id}
       >
-        <div className="px-4 py-5 sm:p-6">
-          <div className="movieHeadContainer">
-            <h4 className="movieTitle">{title}</h4>
+        <div className="flex flex-column justify-between h-full px-4 py-3 sm:p-6">
+          <div>
+            <h4 className="text-white text-lg font-bold border-b py-1">
+              {title}
+            </h4>
           </div>
-          <ul className="list-group">
-            <li className="list-group-item">
+          <ul className="text-white bg-transparent">
+            <li className="text-white py-1">
               {' '}
-              <span>Release Year:</span> {releaseYear}
+              <span>
+                <strong>Release Year: </strong>
+              </span>{' '}
+              {releaseYear}
             </li>
-            <li className="list-group-item">
+            <li className="text-white py-1">
               {' '}
-              <span>Actors: </span>
+              <span>
+                <strong>Actors: </strong>
+              </span>
               {outputActor}
             </li>
-            <li className="list-group-item">
+            <li className="text-white py-1">
               {' '}
-              <span> Genre: </span>
+              <span>
+                {' '}
+                <strong>Genre: </strong>
+              </span>
               {genre}
             </li>
           </ul>
           <form onSubmit={handleSubmit}>
-            <label>Add Actor </label> <br />
             <select
-              className="form-select"
+              className="m-1 p-1 block w-full  pr-4 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
               required
               value={value}
               onChange={handleChange}
             >
-              <option value="">Select</option>
+              <option value="">Add Actor</option>
               {arrOfOptions}
             </select>
             <input
-              // className="btn btn-outline-secondary"
+              className="p-1 m-1 w-full border-transparent text-sm text-center font-medium rounded-md shadow-sm text-white bg-yellow-600 hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500"
               type="submit"
               value="Submit"
             />
           </form>
-          <button onClick={deleteMovie}>Delete Movie</button>
+          <button
+            className="p-1 m-1 w-full border-transparent text-sm text-center font-medium rounded-md shadow-sm text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500"
+            onClick={deleteMovie}
+          >
+            Delete Movie
+          </button>
         </div>
       </article>
     );
@@ -241,56 +255,69 @@ const CardDisplay = (props: any) => {
     };
     return (
       <article
-        className="bg-gray-400 w-cards m-1 overflow-hidden shadow sm:rounded-lg"
+        className="bg-gray-600 w-cards h-cards border m-1 overflow-hidden shadow sm:rounded-lg"
         id={props.id}
       >
-        <div className="px-4 py-5 sm:p-6">
-          <div className="actorHeadContainer">
-            <h4 className="actorName">{firstName + ' ' + lastName}</h4>
+        <div className="flex flex-column justify-between h-full px-4 py-3 sm:p-6">
+          <div>
+            <h4 className="text-white text-lg font-bold border-b py-1">
+              {firstName + ' ' + lastName}
+            </h4>
           </div>
-          <ul className="list-group">
-            <li className="list-group-item">
+          <ul className="text-white bg-transparent">
+            <li className="text-white py-1">
               {' '}
-              <span>Movies:</span> {outputMovie}
+              <span>
+                <strong>Movies:</strong>
+              </span>{' '}
+              {outputMovie}
             </li>
-            <li className="list-group-item">
+            <li className="text-white py-1">
               {' '}
-              <span>Nickname:</span> {nickname}
+              <span>
+                <strong>Nickname:</strong>
+              </span>{' '}
+              {nickname}
             </li>
           </ul>
           <form onSubmit={handleSubmitNickname}>
-            <label>Nickname: </label> <br />
             <input
+              className="shadow-sm m-1 p-1 w-full focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
               type="text"
+              placeholder="Add Nickname"
               value={valueNickname}
               onChange={handleChangeNickname}
             />
             <input
-              className="btn btn-outline-secondary"
+              className="p-1 m-1 w-full border-transparent text-sm text-center font-medium rounded-md shadow-sm text-white bg-yellow-600 hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500"
               type="submit"
-              value="Submit"
+              value="Submit Nickname"
             />
           </form>
-          <form onSubmit={handleSubmit} id={props.id}>
-            <label>
-              Add Movie <br />
+          <div>
+            <form onSubmit={handleSubmit} id={props.id}>
               <select
-                className="form-select"
+                className="m-1 p-1 block w-full  pr-4 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
                 required
                 value={valueMovie}
                 onChange={handleChange}
               >
-                <option value="">Select</option>
+                <option value="">Add Actor</option>
                 {arrOfOptions}
               </select>
-            </label>
-            <input
-              // className="btn btn-outline-secondary"
-              type="submit"
-              value="Submit"
-            />
-          </form>
-          <button onClick={deleteActor}>Delete Actor</button>
+              <input
+                className="p-1 m-1 w-full border-transparent text-sm text-center font-medium rounded-md shadow-sm text-white bg-yellow-600 hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500"
+                type="submit"
+                value="Submit Actor"
+              />
+            </form>
+            <button
+              className="p-1 m-1 w-full border-transparent text-sm text-center font-medium rounded-md shadow-sm text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500"
+              onClick={deleteActor}
+            >
+              Delete Actor
+            </button>
+          </div>
         </div>
       </article>
     );

@@ -66,7 +66,7 @@ const CacheDisplay = (props: any) => {
 
   return (
     <div className="w-11/12 bg-black shadow border overflow-x-hidden rounded-xl ml-4 mt-2 mr-2 mb-2">
-      <div className="w-max h-full rounded-xl overflow-auto">
+      <div className="w-full h-full rounded-xl overflow-auto">
         <div className="px-4 py-3 sm:p-6">
           <pre className="flex flex-column overflow-hidden text-white">
             <div className="flex flex-row justify-between">

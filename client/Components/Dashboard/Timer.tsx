@@ -16,20 +16,30 @@ declare global {
     }
   }
 }
-// console.log(Chart);
+
 const Timer = (props: any) => {
   const { queryTime, gqlRequest } = props;
   const chartRef = (React as any).useRef();
 
-  const labels = ['January', 'February', 'March', 'April', 'May', 'June'];
+  const [resTimes, setResTimes] = (React as any).useState([]);
+  const [labels, setlables] = (React as any).useState([0]);
+
+  function addData(chart: any, label: any, data: any) {
+    chart.data.labels.push(labels[labels.length - 1] + 1);
+    chart.data.datasets.forEach((dataset: any) => {
+      dataset.data.push(data);
+    });
+    chart.update();
+  }
+
   const data = {
     labels: labels,
     datasets: [
       {
-        label: 'My First dataset',
+        // label: 'My First dataset',
         backgroundColor: 'rgb(255, 99, 132)',
         borderColor: 'rgb(255, 99, 132)',
-        data: [0, 10, 5, 2, 20, 30, 45],
+        data: 0,
       },
     ],
   };
@@ -37,20 +47,51 @@ const Timer = (props: any) => {
   const config = {
     type: 'line',
     data,
-    options: {},
+    options: {
+      aspectRatio: 1.5,
+      scales: {
+        y: {
+          suggestedMin: 0,
+          suggestedMax: 600,
+          ticks: {
+            // Include a dollar sign in the ticks
+            callback: function (value: any, index: any, values: any) {
+              return value + ' ms';
+            },
+          },
+        },
+      },
+      plugins: {
+        legend: {
+          display: false,
+          labels: {
+            color: 'rgb(255, 99, 132)',
+          },
+        },
+      },
+    },
   };
-  console.log((window as any).Chart);
+  // const newChart: any = new (window as any).Chart(chartRef.current, config);
+
+  let [myChart, setMyChart] = (React as any).useState();
+
+  console.log(myChart);
   (React as any).useEffect(() => {
-    const myChart = new (window as any).Chart(chartRef.current, config);
+    myChart = new (window as any).Chart(chartRef.current, config);
+    setMyChart(myChart);
   }, []);
+
+  (React as any).useEffect(() => {
+    addData(myChart, labels, queryTime);
+  }, [queryTime]);
 
   return (
     <div className="timer-query">
+      <div className="flex justify-end">
+        <code className="text-blue-500">{`Response Time: ${queryTime}ms`}</code>
+      </div>
       <div>
-        <div>
-          <canvas id="myChart" ref={chartRef}></canvas>
-        </div>
-        <code className="text-red-600">{`Request Timer ${queryTime}ms`}</code>
+        <canvas id="myChart" ref={chartRef}></canvas>
       </div>
     </div>
   );

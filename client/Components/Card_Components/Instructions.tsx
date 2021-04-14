@@ -20,8 +20,8 @@ declare global {
 
 const Instructions = (props: any) => {
   return (
-    <div className="flex align-center border-t my-3 items-center">
-      <div className="text-sm py-1 text-gray-400">
+    <div className="flex align-center border-t mt-1 mb-3 items-center">
+      <div className="text-sm pt-3 pb-1 text-gray-400">
         <p className="py-1">
           <strong>Query:</strong> Displays the actual GraphQL query that is
           going to be made. Select an option from the drop down to see the
@@ -33,7 +33,7 @@ const Instructions = (props: any) => {
           request to respond. Notice the difference when the data isn't cached?
         </p>
         <p className="py-1">
-          <strong>Cache:</strong> we can see our destructured query and
+          <strong>Cache:</strong> We can see our destructured query and
           responses which are currently stored in a local client cache. If you
           query for a specific property that is stored in the cache, the
           Obsidian algorithm will find and return it. Eliminating the need to

@@ -19,7 +19,7 @@ declare global {
 
 const Header = (props: any) => {
   return (
-    <div className="pb-2 border-gray-200 mt-10 flex flex-row justify-between items-center">
+    <div className="pb-1  mt-10 flex flex-row justify-between items-center">
       <div>
         <h1 className="text-4xl leading-6 font-medium text-gray-300">
           Obsidian Demonstration

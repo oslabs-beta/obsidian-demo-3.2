@@ -49,7 +49,6 @@ const QueryDisplay = (props: any) => {
 
   (React as any).useEffect(() => {
     setGqlRequest(allMoviesByGenre);
-    console.log('butts');
   }, [genre]);
 
   const handleDropChange = (selection: any) => {
@@ -101,7 +100,7 @@ const QueryDisplay = (props: any) => {
                 <option value="DRAMA">Drama Movies</option>
                 <option value="COMEDY">Comedy Movies</option>
                 <option value="ROMANCE">Romance Movies</option>
-                <option value="ADVENTURE">Adventure Moves</option>
+                <option value="ADVENTURE">Adventure Movies</option>
               </select>
             </div>
             <div>

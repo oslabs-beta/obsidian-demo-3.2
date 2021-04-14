@@ -21,11 +21,11 @@ const Response = (props: any) => {
 
   return (
     <div className="w-11/12 bg-black border overflow-hidden shadow rounded-xl ml-2 mt-2 mr-4 mb-2">
-      <div className="w-max h-full rounded-xl overflow-auto">
+      <div className="w-full h-full rounded-xl overflow-auto">
         <div className="px-4 py-3 sm:p-6">
           <pre className="flex flex-column max-w-full text-white">
             Response:
-            <code className="text-wrap overflow-auto max-w-full text-yellow-600">
+            <code className="text-wrap-adam overflow-auto max-w-full text-yellow-600">
               {JSON.stringify(dashResponse)}
             </code>
           </pre>
