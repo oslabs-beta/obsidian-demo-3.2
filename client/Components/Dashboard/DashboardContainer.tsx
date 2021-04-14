@@ -19,11 +19,10 @@ const DashboardContainer = (props: any) => {
   const { queryTime, gqlRequest, dashResponse } = props;
   return (
     <div className="flex flex-col">
-      <div className="flex flex-row items-center w-full h-boxes items-stretch sm:flex-column">
+      <div className="flex flex-row flex-wrap justify-center w-full  items-stretch sm:flex-column">
         <Query gqlRequest={gqlRequest} />
         <Performance queryTime={queryTime} />
-      </div>
-      <div className="flex flex-row items-center w-full h-boxes items-stretch sm:flex-column">
+
         <CacheDisplay dashResponse={dashResponse} />
         <Response dashResponse={dashResponse} />
       </div>

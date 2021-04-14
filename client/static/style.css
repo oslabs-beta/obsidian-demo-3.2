@@ -7,7 +7,9 @@
     background-color: rgba(255, 255, 255, var(--tw-bg-opacity));
   }
 }
-
+.w-boxes {
+  width: 574px;
+}
 .h-boxes {
   height: 500px;
 }
@@ -15,9 +17,9 @@
   width: 380px;
 }
 .h-cards {
-  height: 400px;
+  height: 420px;
 }
-.text-wrap-adam {
+.text-wrap {
   word-wrap: break-word;
 }
 .text-wrap-normal {

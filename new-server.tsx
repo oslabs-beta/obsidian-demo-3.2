@@ -1,8 +1,8 @@
 import { Application, Router } from 'https://deno.land/x/oak@v6.0.1/mod.ts';
 
 import { React, ReactDOMServer } from './deps.ts';
-import { ObsidianRouter } from './serverDeps.ts';
-// import { createDb } from './server/db/db.ts';
+import { ObsidianRouter, Cron } from './serverDeps.ts';
+import { createDb } from './server/db/db.ts';
 import resolvers from './server/resolvers.ts';
 import types from './server/schema.ts';
 import App from './client/app.tsx';
@@ -39,8 +39,8 @@ router.get('/', (ctx: any) => {
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
         <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+
         <link rel="stylesheet" href="/static/style.css">
-        <link rel="stylesheet" href="/static/tailwind.css">
 
 
         <link
@@ -88,6 +88,15 @@ const GraphQLRouter = await ObsidianRouter<ObsRouter>({
   redisPort: 6379,
 });
 app.use(GraphQLRouter.routes(), GraphQLRouter.allowedMethods());
+
+const cron = new Cron();
+
+cron.add('*/30 * * * *', () => {
+  console.log('It has been 30 minutes, the DB is refreshing');
+  createDb();
+});
+
+cron.start();
 
 app.addEventListener('listen', () => {
   console.log(`listening on localhost:${PORT}`);
