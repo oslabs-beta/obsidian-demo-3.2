@@ -1,7 +1,7 @@
 version: '3.0'
 services:
   dev:
-    image: 'dragonglassobsidian/obsidian-demo-prod'
+    image: 'ops-demo'
     container_name: obsidian-demo-prod-container
     ports:
       - '3000:3000'
@@ -10,11 +10,11 @@ services:
     command: deno run --allow-net --allow-read --allow-env --unstable new-server.tsx
     environment:
       - REDIS_HOST=redis
-      - PG_PORT=5432
-      - PG_USER=uiikgqgj
-      - PG_DATABASE=uiikgqgj
-      - PG_PASSWORD=cSjcLEFvsuAb7Q3bc6O5p2LYbyjWlw5t
-      - PG_HOSTNAME=suleiman.db.elephantsql.com
+      - PG_PORT=${PG_PORT}
+      - PG_USER=${PG_USER}
+      - PG_DATABASE=${PG_DATABASE}
+      - PG_PASSWORD=${PG_PASSWORD}
+      - PG_HOSTNAME=${PG_HOSTNAME}
     depends_on:
       - redis-db
   redis-db:

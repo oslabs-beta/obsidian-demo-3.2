@@ -42,7 +42,7 @@ const MutationDisplay = (props: any) => {
 
             <label className="sr-only" htmlFor="releaseYear"></label>
             <input
-              className="shadow-sm m-1 p-1  w-full focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
+              className="shadow-sm m-1 p-1  max-w-full focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
               name="releaseYear"
               value={props.releaseYear}
               onChange={props.onChange}
