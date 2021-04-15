@@ -24,7 +24,7 @@ app.use(async (ctx, next) => {
   ctx.response.headers.set('X-Response-Time', `${ms}ms`);
 });
 // create and seed DB
-// await createDb();
+createDb();
 
 // Create Route
 const router = new Router();
