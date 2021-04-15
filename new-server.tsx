@@ -61,14 +61,13 @@ router.get('/', (ctx: any) => {
 });
 
 // Bundle hydrated app
-const { files, diagnostics } = await Deno.emit('./client/client.tsx', {
-  bundle: 'esm',
-});
+const [_, clientJS] = await Deno.bundle('./client/client.tsx');
+
 // Router for serving bundle
 const bundleRouter = new Router();
 bundleRouter.get('/static/client.js', (context) => {
   context.response.headers.set('Content-Type', 'text/html');
-  context.response.body = files['deno:///bundle.js'];
+  context.response.body = clientJS;
 });
 
 // Attach routes
