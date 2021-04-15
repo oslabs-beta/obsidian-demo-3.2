@@ -1,32 +1,16 @@
 version: '3.0'
 services:
   dev:
-    image: 'ops-demo'
-    container_name: obsidian-demo-prod-container
+    build: .
+    container_name: obs-demo
     ports:
       - '3000:3000'
     volumes:
       - ./:/usr/app
-    command: deno run --allow-net --allow-read --allow-env --unstable new-server.tsx
     environment:
-      - REDIS_HOST=redis
-      - PG_PORT=${PG_PORT}
-      - PG_USER=${PG_USER}
-      - PG_DATABASE=${PG_DATABASE}
-      - PG_PASSWORD=${PG_PASSWORD}
-      - PG_HOSTNAME=${PG_HOSTNAME}
-    depends_on:
-      - redis-db
-  redis-db:
-    image: dragonglassobsidian/obsidian-redis
-    container_name: obsidian-redis-database
-    ports:
-      - '6379:6379'
-    hostname: redis
-    expose:
-      - 6379
-    command: ['redis-server', '--bind', '0.0.0.0', '--port', '6379']
-    volumes:
-      - dev-redis-volume:/var/lib/redis/data
-volumes:
-  dev-redis-volume:
+      - REDIS_HOST=localhost
+      - PG_PORT=${RDS_PORT}
+      - PG_USER=${RDS_USERNAME}
+      - PG_DATABASE=${RDS_DB_NAME}
+      - PG_PASSWORD=${RDS_PASSWORD}
+      - PG_HOSTNAME=${RDS_HOSTNAME}
