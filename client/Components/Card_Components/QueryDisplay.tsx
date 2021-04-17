@@ -73,7 +73,7 @@ const QueryDisplay = (props: any) => {
 
   return (
     <>
-      <div className="flex flex-row w-1/3 border-r justify-center ">
+      <div className="flex flex-row w-1/3 justify-center m-2 md:border-r">
         <div className="flex flex-col items-center">
           <h3 className="text-white text-lg">Make a query</h3>
 
