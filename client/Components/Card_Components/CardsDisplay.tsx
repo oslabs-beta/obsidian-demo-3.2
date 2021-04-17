@@ -15,17 +15,10 @@ const CardsDisplay = (props: any) => {
   const cards: any = [];
 
   if (!Object.keys(cache.storage.ROOT_QUERY).length) {
-    // return (
-    //   // <div id="no-data">
-    //   //   <h1> Fetch some data... </h1>
-    //   // </div>
-    // );
   } else if (props.display === 'all movies') {
     let resp = props.cardsResponse;
     const arrOfActors = props.actorResponse.actors;
     const actorList: any = {};
-    // console.log('arrActors', arrOfActors)
-    // console.log('resp',resp)
     arrOfActors.forEach((actor: any) => {
       let output = actor.firstName + ' ' + actor.lastName;
       actorList[output] = actor.id;

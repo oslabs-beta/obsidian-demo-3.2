@@ -1,5 +1,4 @@
 import { React } from '../../../deps.ts';
-// import CardsContainer from './CardsContainer.tsx';
 
 declare global {
   namespace JSX {
@@ -87,8 +86,6 @@ const QueryDisplay = (props: any) => {
                 id="genres"
                 value={type}
                 onChange={(e: any) => handleDropChange(e.target.value)}
-                // value={type}
-                // onChange={setGenre}
                 className="m-1 p-1 block w-full  pr-4 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
               >
                 <option value="">Select Query</option>

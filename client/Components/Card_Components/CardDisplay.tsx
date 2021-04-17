@@ -251,7 +251,6 @@ const CardDisplay = (props: any) => {
       await setCache(new BrowserCache(cache.storage));
       const newResponse = await query(allActorsQuery);
       props.setCardsResponse(newResponse.data);
-      // props.setDisplay('all actors');
     };
     return (
       <article

@@ -1,6 +1,6 @@
 // import { pool } from './db/db.ts';
-import { Pool } from "https://deno.land/x/postgres/mod.ts";
-import { PoolClient } from "https://deno.land/x/postgres/client.ts";
+import { Pool } from 'https://deno.land/x/postgres/mod.ts';
+import { PoolClient } from 'https://deno.land/x/postgres/client.ts';
 
 let pg_port: any = Deno.env.get('PG_PORT');
 if (typeof pg_port === 'string') {
@@ -14,13 +14,6 @@ const config = {
   hostname: Deno.env.get('PG_HOSTNAME'),
   port: pg_port,
 };
-// const config = {
-//   user: 'uiikgqgj',
-//   database: 'uiikgqgj',
-//   password: 'cSjcLEFvsuAb7Q3bc6O5p2LYbyjWlw5t',
-//   hostname: 'suleiman.db.elephantsql.com',
-//   port: 5432,
-// };
 
 const POOL_CONNECTIONS = 3; // breaks at 10+ due to ElephantSQL
 
@@ -34,15 +27,13 @@ const resolvers = {
     ) => {
       try {
         const client: PoolClient = await pool.connect();
-        // console.log(client)
+
         const result = await client.queryObject({
           text: 'SELECT * FROM obsidian_demo_schema.films;',
           args: [],
         });
         client.release();
-        // console.log(result)
         let resObj = result.rows.map((arr) => {
-          // console.log('yekljdfl',arr)
           return {
             id: arr.id,
             title: arr.title,
@@ -50,16 +41,20 @@ const resolvers = {
             releaseYear: arr.release_dt,
           };
         });
-        // await console.log('resObj1', resObj)
+
         if (input) {
           if (input.genre) {
-            resObj = resObj.filter((obj : any) => obj.genre === input.genre);
+            resObj = resObj.filter((obj: any) => obj.genre === input.genre);
           }
           if (input.order) {
             if (input.order === 'ASC') {
-              resObj = resObj.sort((a :any , b: any) => a.releaseYear - b.releaseYear);
+              resObj = resObj.sort(
+                (a: any, b: any) => a.releaseYear - b.releaseYear
+              );
             } else {
-              resObj = resObj.sort((a :any , b: any) => b.releaseYear - a.releaseYear);
+              resObj = resObj.sort(
+                (a: any, b: any) => b.releaseYear - a.releaseYear
+              );
             }
           }
           if (input.actor) {
@@ -75,7 +70,7 @@ const resolvers = {
               });
               client.release();
               const arrOfIds = result.rows.map((arr) => arr[0]);
-              resObj = resObj.filter((obj : any) => arrOfIds.includes(obj.id));
+              resObj = resObj.filter((obj: any) => arrOfIds.includes(obj.id));
             } catch (err) {
               console.log(err);
             }
@@ -427,7 +422,6 @@ const resolvers = {
       }
     },
   },
-
 };
 
 export default resolvers;

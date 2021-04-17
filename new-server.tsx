@@ -37,16 +37,9 @@ router.get('/', (ctx: any) => {
       <head>
         <meta charset="UTF-8">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
         <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
-
         <link rel="stylesheet" href="/static/style.css">
-
-
-        <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
-    />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
         <title>Obsidian</title>
       </head>
       <body class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 bg-gray-900" >
@@ -88,6 +81,7 @@ const GraphQLRouter = await ObsidianRouter<ObsRouter>({
 });
 app.use(GraphQLRouter.routes(), GraphQLRouter.allowedMethods());
 
+//Rebuilds the database every 30 minutes to ensure there is always valid data
 const cron = new Cron();
 
 cron.add('*/30 * * * *', () => {
