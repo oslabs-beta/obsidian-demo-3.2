@@ -29,3 +29,7 @@
 .w-maxcontent {
   width: max-content;
 }
+
+.w-query {
+  width: 3;
+}
