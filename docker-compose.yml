@@ -9,9 +9,23 @@ services:
     volumes:
       - ./:/usr/app
     environment:
-      - REDIS_HOST=obsidian-demo-redis-cache.ovga9a.0001.use1.cache.amazonaws.com
+      - REDIS_HOST=redis
       - PG_PORT=${RDS_PORT}
       - PG_USER=${RDS_USERNAME}
       - PG_DATABASE=${RDS_DB_NAME}
       - PG_PASSWORD=${RDS_PASSWORD}
       - PG_HOSTNAME=${RDS_HOSTNAME}
+    command: deno run --allow-net --allow-read --allow-env --unstable new-server.tsx
+      depends_on:
+      - redis-db
+  redis-db:
+    image: dragonglassobsidian/obsidian-redis
+    container_name: obsidian-redis-database
+    ports:
+      - '6379:6379'
+    hostname: redis
+    command: ['redis-server', '--bind', '0.0.0.0', '--port', '6379']
+    volumes:
+      - dev-redis-volume:/var/lib/redis/data
+volumes:
+  dev-redis-volume:
