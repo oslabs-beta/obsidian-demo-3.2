@@ -9,7 +9,7 @@ services:
     volumes:
       - ./:/usr/app
     environment:
-      - REDIS_HOST=redis
+      - REDIS_HOST=obsidian-demo-redis-cache.ovga9a.0001.use1.cache.amazonaws.com
       - PG_PORT=${RDS_PORT}
       - PG_USER=${RDS_USERNAME}
       - PG_DATABASE=${RDS_DB_NAME}
