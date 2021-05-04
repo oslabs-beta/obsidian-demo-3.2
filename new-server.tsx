@@ -41,6 +41,15 @@ router.get('/', (ctx: any) => {
         <link rel="stylesheet" href="/static/style.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
         <title>Obsidian</title>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-9KFRS33Z82"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'G-9KFRS33Z82');
+        </script>
       </head>
       <body class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 bg-gray-900" >
         <div  id="root">${body}</div>
