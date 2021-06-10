@@ -21,13 +21,6 @@ const config = {
   port: pg_port,
 };
 
-// const config = {
-//   user: 'cbdwxnyo',
-//   database: 'cbdwxnyo',
-//   password: 'OD1zYMixCS78zN5CPHUGYZLE053VIc2i',
-//   hostname: 'queenie.db.elephantsql.com',
-//   port: 5432,
-// };
 const POOL_CONNECTIONS = 2; // breaks at 10+ due to ElephantSQL
 
 // connect to db
