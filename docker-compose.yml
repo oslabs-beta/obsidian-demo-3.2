@@ -1,9 +1,9 @@
-version: '3.0'
+version: '3.8'
 services:
-  dev:
+  demonstration:
     build: .
     restart: always
-    container_name: obs-demo
+    container_name: obs-demonstration
     ports:
       - '80:3000'
     volumes:
