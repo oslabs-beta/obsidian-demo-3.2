@@ -93,7 +93,6 @@ const GraphQLRouter = await ObsidianRouter<ObsRouter>({
   resolvers: resolvers,
   redisPort: 6379,
   usePlayground: false,
-  maxQueryDepth: 2,
 });
 app.use(GraphQLRouter.routes(), GraphQLRouter.allowedMethods());
 
