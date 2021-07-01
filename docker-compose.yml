@@ -15,3 +15,5 @@ services:
       - PG_DATABASE=${RDS_DB_NAME}
       - PG_PASSWORD=${RDS_PASSWORD}
       - PG_HOSTNAME=${RDS_HOSTNAME}
+    env_file: 
+      - .env
