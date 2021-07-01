@@ -23,6 +23,7 @@ app.use(async (ctx, next) => {
   const ms = Date.now() - start;
   ctx.response.headers.set("X-Response-Time", `${ms}ms`);
 });
+
 // create and seed DB
 createDb();
 
