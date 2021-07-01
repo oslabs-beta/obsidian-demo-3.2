@@ -182,29 +182,48 @@ const CardDisplay = (props: any) => {
     };
     const handleSubmit = async (event: any) => {
       event.preventDefault();
-      const associateActorWithMovie = `
-  mutation addingActor{
-    associateActorWithMovie(input:{actorId:${event.target.parentNode.id},movieId: ${props.movieList[valueMovie]}, respType:ACTOR}){
-    ... on Actor{
-          id
-          movies {
+      // console.log('EVENT EVENT EENT', props.id);
+    //       const associateActorWithMovie = `
+    //   mutation addingActor{
+    //     associateActorWithMovie(input: { actorId: ${event.target.parentNode.id}, movieId: ${props.movieList[valueMovie]}, respType:ACTOR}){
+    //     ... on Actor{
+    //           id
+    //           movies {
+    //             id
+    //             actors {
+    //               id
+    //             }
+    //           }
+    //         }
+    //         ... on Movie{
+    //           id
+    //         }
+    //       }
+    //     }
+    // `;
+    const associateActorWithMovie = `
+    mutation addingActor{
+      associateActorWithMovie(input: { actorId: ${props.id}, movieId: ${props.movieList[valueMovie]}, respType:ACTOR}){
+      ... on Actor{
             id
-            actors {
+            movies {
               id
+              actors {
+                id
+              }
             }
           }
-        }
-        ... on Movie{
-          id
+          ... on Movie{
+            id
+          }
         }
       }
-    }
-`;
+    `;
       console.log('movieList', props.movieList);
       console.log('valueMovie', valueMovie);
       console.log('gql queryStr', associateActorWithMovie);
       const res = await mutate(associateActorWithMovie);
-      console.log('response fro, server', res);
+      console.log('response from server', res);
       const newResponse = await query(allActorsQuery);
       props.setCardsResponse(newResponse.data);
     };
