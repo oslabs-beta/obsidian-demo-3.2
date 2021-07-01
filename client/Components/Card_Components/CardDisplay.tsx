@@ -75,12 +75,13 @@ const CardDisplay = (props: any) => {
       props.setCardsResponse(newResponse.data);
     };
     const deleteMovie = async (e: any) => {
-      const deleteMovieMutation = `mutation {deleteMovie(id:${e.target.parentNode.parentNode.id}){
+      // const deleteMovieMutation = `mutation {deleteMovie(id:${e.target.parentNode.parentNode.id}){
+      const deleteMovieMutation = `mutation {deleteMovie(id:${props.id}){  
             id
             title
           }
           }`;
-      console.log(e);
+      console.log(e, props.id);
       await mutate(deleteMovieMutation, { toDelete: true });
       await setCache(new BrowserCache(cache.storage));
       const newResponse = await query(allMoviesQuery);
@@ -182,7 +183,6 @@ const CardDisplay = (props: any) => {
     };
     const handleSubmit = async (event: any) => {
       event.preventDefault();
-      // console.log('EVENT EVENT EENT', props.id);
     //       const associateActorWithMovie = `
     //   mutation addingActor{
     //     associateActorWithMovie(input: { actorId: ${event.target.parentNode.id}, movieId: ${props.movieList[valueMovie]}, respType:ACTOR}){
