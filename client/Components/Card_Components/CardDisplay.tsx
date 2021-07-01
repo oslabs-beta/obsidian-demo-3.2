@@ -261,7 +261,8 @@ const CardDisplay = (props: any) => {
     });
     //deleting actor
     const deleteActor = async (e: any) => {
-      const deleteActorMutation = `mutation {deleteActor(id:${e.target.parentNode.id}){
+      // const deleteActorMutation = `mutation {deleteActor(id:${e.target.parentNode.id}){
+      const deleteActorMutation = `mutation {deleteActor(id:${props.id}){
       id
       firstName
     }
