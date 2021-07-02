@@ -4,7 +4,7 @@ deploy:
   provider: elasticbeanstalk
   region: 'us-east-1'
   app: 'obsidian-demonstration'
-  env: 'obsidian-demonstration-prod'
+  env: 'obs-demonstration-prod'
   bucket_name: 'elasticbeanstalk-us-east-1-416954177761'
   bucket_path: 'demonstration'
   access_key_id: '$AWS_ACCESS_KEY_ID'
