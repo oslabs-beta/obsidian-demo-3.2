@@ -1,19 +1,19 @@
-import { Application, Router } from 'https://deno.land/x/oak@v6.0.1/mod.ts';
+import { Application, Router } from "https://deno.land/x/oak@v6.0.1/mod.ts";
 
-import { React, ReactDOMServer } from './deps.ts';
-import { ObsidianRouter, Cron } from './serverDeps.ts';
-import { createDb } from './server/db/db.ts';
-import resolvers from './server/resolvers.ts';
-import types from './server/schema.ts';
-import App from './client/app.tsx';
-import { staticFileMiddleware } from './staticFileMiddleware.ts';
+import { React, ReactDOMServer } from "./deps.ts";
+import { Cron, ObsidianRouter } from "./serverDeps.ts";
+import { createDb } from "./server/db/db.ts";
+import resolvers from "./server/resolvers.ts";
+import types from "./server/schema.ts";
+import App from "./client/app.tsx";
+import { staticFileMiddleware } from "./staticFileMiddleware.ts";
 
 const PORT = 3000;
 const app = new Application();
 // Track response time in headers of responses
 app.use(async (ctx, next) => {
   await next();
-  const rt = ctx.response.headers.get('X-Response-Time');
+  const rt = ctx.response.headers.get("X-Response-Time");
   console.log(`${ctx.request.method} ${ctx.request.url} - ${rt}`);
 });
 
@@ -21,15 +21,16 @@ app.use(async (ctx, next) => {
   const start = Date.now();
   await next();
   const ms = Date.now() - start;
-  ctx.response.headers.set('X-Response-Time', `${ms}ms`);
+  ctx.response.headers.set("X-Response-Time", `${ms}ms`);
 });
+
 // create and seed DB
 createDb();
 
 // Create Route
 const router = new Router();
 
-router.get('/', (ctx: any) => {
+router.get("/", (ctx: any) => {
   try {
     const body = (ReactDOMServer as any).renderToString(<App />);
     ctx.response.body = `<!DOCTYPE html>
@@ -58,25 +59,24 @@ router.get('/', (ctx: any) => {
       </body>
       </html>`;
   } catch (err) {
-    console.log('error', err);
+    console.log("error", err);
   }
 });
 
 // Bundle hydrated app
 // const [_, clientJS] = await Deno.bundle('./client/client.tsx');
 
-const { files, diagnostics } = await Deno.emit('./client/client.tsx', {
-  bundle: 'esm',
+const { files, diagnostics } = await Deno.emit("./client/client.tsx", {
+  bundle: "module",
 });
 
 // Router for serving bundle
 const bundleRouter = new Router();
-bundleRouter.get('/static/client.js', (context) => {
-  context.response.headers.set('Content-Type', 'text/html');
+bundleRouter.get("/static/client.js", (ctx) => {
+  ctx.response.headers.set("Content-Type", "text/html");
   // context.response.body = clientJS;
-  context.response.body = files['deno:///bundle.js'];
+  ctx.response.body = files["deno:///bundle.js"];
 });
-
 // Attach routes
 app.use(router.routes());
 app.use(staticFileMiddleware);
@@ -89,23 +89,25 @@ interface ObsRouter extends Router {
 // Create GraphQL Router
 const GraphQLRouter = await ObsidianRouter<ObsRouter>({
   Router,
+  // context: () => console.log('hi, Cameron'),
   typeDefs: types,
   resolvers: resolvers,
   redisPort: 6379,
+  usePlayground: false,
 });
 app.use(GraphQLRouter.routes(), GraphQLRouter.allowedMethods());
 
 //Rebuilds the database every 30 minutes to ensure there is always valid data
 const cron = new Cron();
 
-cron.add('*/30 * * * *', () => {
-  console.log('It has been 30 minutes, the DB is refreshing');
+cron.add("*/30 * * * *", () => {
+  console.log("It has been 30 minutes, the DB is refreshing");
   createDb();
 });
 
 cron.start();
 
-app.addEventListener('listen', () => {
+app.addEventListener("listen", () => {
   console.log(`listening on localhost:${PORT}`);
 });
 
