@@ -1,0 +1,6 @@
+REDIS_HOST = '127.0.0.1'
+PG_USER = obsidiandemo
+PG_DATABASE = postgres://srculqui:4X2zQ92rvidFPIclpqdbpQFhPPWJQUYs@kashin.db.elephantsql.com/srculqui
+PG_PORT = 3000
+PG_HOSTNAME = kashin.db.elephantsql.com
+PG_PASSWORD = 4X2zQ92rvidFPIclpqdbpQFhPPWJQUYs
