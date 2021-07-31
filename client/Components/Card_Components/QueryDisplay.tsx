@@ -68,6 +68,7 @@ const QueryDisplay = (props: any) => {
       byGenre(genre);
     }
     e.preventDefault();
+    
   };
 
   return (

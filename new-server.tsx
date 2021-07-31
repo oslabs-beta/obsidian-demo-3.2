@@ -14,7 +14,7 @@ const app = new Application();
 app.use(async (ctx, next) => {
   await next();
   const rt = ctx.response.headers.get("X-Response-Time");
-  console.log(`${ctx.request.method} ${ctx.request.url} - ${rt}`);
+  console.log(`ctx method/url console.log ${ctx.request.method} ${ctx.request.url} - ${rt}`);
 });
 
 app.use(async (ctx, next) => {
@@ -93,7 +93,9 @@ const GraphQLRouter = await ObsidianRouter<ObsRouter>({
   typeDefs: types,
   resolvers: resolvers,
   redisPort: 6379,
-  usePlayground: false,
+  useCache: true,
+  usePlayground: true,
+  
 });
 app.use(GraphQLRouter.routes(), GraphQLRouter.allowedMethods());
 

@@ -24,6 +24,7 @@ const CacheDisplay = (props: any) => {
   }
   function createCache() {
     // returns an array of arrays
+    //console.log(cache)
     return Object.entries(cache.storage).reduce((acc: any, pair: any, i) => {
       if (typeof pair[1] === 'object') {
         const insidePair = [];
@@ -59,9 +60,11 @@ const CacheDisplay = (props: any) => {
           </div>
         );
       }
+      //console.log(cache)
       return acc;
     }, []);
   }
+  console.log(cache)
   const cachedPair = createCache();
 
   return (

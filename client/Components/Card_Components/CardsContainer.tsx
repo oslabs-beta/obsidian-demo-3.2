@@ -107,22 +107,41 @@ function CardsContainer(props: any) {
     }
   `,
 
-    moviesByReleaseYear: `query {
-    movies(input: {order : ASC }) {
-      id
-      __typename
-      title
-      releaseYear
-      actors {
+    moviesByReleaseYear:
+    `query ($order: ReleaseYearOrder) {
+      movies(input: {order : $order }) {
         id
         __typename
-        firstName
-        lastName
+        title
+        releaseYear
+        actors {
+          id
+          __typename
+          firstName
+          lastName
+        }
+        genre
       }
-      genre
-    }
-}
-  `,
+  }
+   ` 
+    
+//     `query {
+//     movies(input: {order : ASC }) {
+//       id
+//       __typename
+//       title
+//       releaseYear
+//       actors {
+//         id
+//         __typename
+//         firstName
+//         lastName
+//       }
+//       genre
+//     }
+// }
+//   `
+  ,
 
     addMovie: `mutation {
     addMovie(input: {title: "${title}", releaseYear: ${releaseYear}, genre: ${cardGenre} }) {
