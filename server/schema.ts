@@ -42,6 +42,7 @@ const types = gql`
   }
   input ActorInput {
     film: ID
+    actor: ID
   }
   input NewMovieInput {
     title: String!

@@ -90,7 +90,7 @@ const resolvers = {
         pool = new Pool(config, POOL_CONNECTIONS);
       }
     },
-    actors: async (_a: string, { input }: { input: { film?: string } }) => {
+    actors: async (_a: string, { input }: { input: { film?: string, actor?:string } }) => {
       try {
         const client = await pool.connect();
         
@@ -137,6 +137,30 @@ const resolvers = {
               pool = new Pool(config, POOL_CONNECTIONS);
             }
           }
+          if (input.actor) {
+            try {
+              const client = await pool.connect();
+
+              const {rows} = await client.queryArray<[actor_id: number]>({
+                text:`
+                SELECT * 
+                FROM obsidian_demo_schema.actors
+                WHERE id = $1
+                `,
+                args: [input.actor]
+              })
+              client.release();
+
+              const arrOfIds = rows.map((arr)=> arr[0]);
+              resObj = resObj.filter((obj)=> arrOfIds.includes(obj.id));
+            }
+            catch (err) {
+              console.log(err);
+              console.log('resetting connection');
+              pool.end();
+              pool = new Pool(config, POOL_CONNECTIONS);
+            }
+          }
         }
         return resObj;
       } catch (err) {
@@ -151,6 +175,7 @@ const resolvers = {
     actors: async ({ id }: { id: string }) => {
       try {
         const client = await pool.connect();
+        console.log('findMeActors', id)
 
         const {rows} = await client.queryObject<{id: number, first_name: string, last_name: string, nickname?: string}>({
           text: `
@@ -187,6 +212,7 @@ const resolvers = {
   },
   Actor: {
     movies: async ({ id }: { id: string }) => {
+      console.log("findme", id);
       try {
         const client = await pool.connect();
 
