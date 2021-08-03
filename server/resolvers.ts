@@ -60,27 +60,27 @@ const resolvers = {
               );
             }
           }
-          if (input.actor) {
-            try {
-              const client = await pool.connect();
+          // if (input.actor) {
+          //   try {
+          //     const client = await pool.connect();
 
-              const {rows} = await client.queryArray<[actor_id: number]>({
-                text: `
-                  SELECT film_id
-                  FROM obsidian_demo_schema.actor_films
-                  WHERE actor_id = $1;
-                  `,
-                args: [input.actor],
-              });
+          //     const {rows} = await client.queryArray<[actor_id: number]>({
+          //       text: `
+          //         SELECT film_id
+          //         FROM obsidian_demo_schema.actor_films
+          //         WHERE actor_id = $1;
+          //         `,
+          //       args: [input.actor],
+          //     });
 
-              client.release();
+          //     client.release();
 
-              const arrOfIds =  rows.map((arr) => arr[0]);
-              resObj = resObj.filter((obj) => arrOfIds.includes(obj.id));
-            } catch (err) {
-              console.log(err);
-            }
-          }
+          //     const arrOfIds =  rows.map((arr) => arr[0]);
+          //     resObj = resObj.filter((obj) => arrOfIds.includes(obj.id));
+          //   } catch (err) {
+          //     console.log(err);
+          //   }
+          // }
         }
         return resObj;
       } catch (err) {

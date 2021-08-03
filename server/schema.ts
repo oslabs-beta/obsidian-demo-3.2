@@ -21,6 +21,7 @@ const types = gql`
   }
 
   union ActorOrMovie = Actor | Movie
+  
   type Movie {
     id: ID!
     title: String!
