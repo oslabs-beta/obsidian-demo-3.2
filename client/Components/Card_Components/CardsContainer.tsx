@@ -56,21 +56,64 @@ function CardsContainer(props: any) {
   };
   const allQueries = {
     allMoviesQuery: `query {
-      movies {
+      movies  (input: {genre: SCIFI}){
         id
         __typename
         title
         releaseYear
+        genre
         actors {
           id
           __typename
           firstName
           lastName
-        }
+            movies {
+        id
+        __typename
+        title
+        releaseYear
         genre
-      }
-    }
-  `,
+        actors {
+          id
+          __typename
+          firstName
+          lastName
+          movies {
+        id
+        __typename
+        title
+        releaseYear
+        genre
+        actors {
+          id
+          __typename
+          firstName
+          lastName    
+               
+                        }
+                        }        
+                        }
+                    }
+                }
+        }
+    }`,
+    
+  //   `query {
+  //     movies {
+  //       id
+  //       __typename
+  //       title
+  //       releaseYear
+  //       actors {
+  //         id
+  //         __typename
+  //         firstName
+  //         lastName
+  //       }
+  //       genre
+  //     }
+  //   }
+  // `,
 
     allActorsQuery: `query {
       actors {

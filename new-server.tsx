@@ -14,7 +14,7 @@ const app = new Application();
 app.use(async (ctx, next) => {
   await next();
   const rt = ctx.response.headers.get("X-Response-Time");
-  console.log(`ctx method/url console.log ${ctx.request.method} ${ctx.request.url} - ${rt}`);
+  //console.log(`ctx method/url console.log ${ctx.request.method} ${ctx.request.url} - ${rt}`);
 });
 
 app.use(async (ctx, next) => {

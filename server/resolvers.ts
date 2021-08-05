@@ -175,7 +175,7 @@ const resolvers = {
     actors: async ({ id }: { id: string }) => {
       try {
         const client = await pool.connect();
-        console.log('findMeActors', id)
+        //console.log('findMeActors', id)
 
         const {rows} = await client.queryObject<{id: number, first_name: string, last_name: string, nickname?: string}>({
           text: `
@@ -212,7 +212,7 @@ const resolvers = {
   },
   Actor: {
     movies: async ({ id }: { id: string }) => {
-      console.log("findme", id);
+      //console.log("findme", id);
       try {
         const client = await pool.connect();
 
