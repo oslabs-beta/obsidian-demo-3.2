@@ -8,6 +8,11 @@ import types from './server/schema.ts';
 import App from './client/app.tsx';
 import { staticFileMiddleware } from './staticFileMiddleware.ts';
 
+
+Deno.test("API", async () => {
+
+                           
+
 const PORT = 3000;
 const app = new Application();
 // Track response time in headers of responses
@@ -95,8 +100,6 @@ const GraphQLRouter = await ObsidianRouter<ObsRouter>({
   redisPort: 6379,
   useCache: true,
   usePlayground: true,
-  //feilds used to create the custom entries in the database
-  customIdentifier: ['__typename', 'id'],
 });
 app.use(GraphQLRouter.routes(), GraphQLRouter.allowedMethods());
 
@@ -115,3 +118,4 @@ app.addEventListener('listen', () => {
 });
 
 await app.listen({ port: PORT });
+}

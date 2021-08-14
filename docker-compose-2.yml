@@ -1,0 +1,42 @@
+version: '3.8'
+services:
+  demonstration:
+    build: .
+    restart: always
+    container_name: obs-demonstration
+    ports:
+      - '3000:3000'
+    volumes:
+      - .:/usr/app
+    env_file:
+      - docker.env
+    depends_on:
+      - postgres-server
+      - redis-server
+  postgres-server:
+    image: cjberry/postgres-obs
+    container_name: obs-postgres
+    env_file:
+      - docker.env
+    ports:
+      - '5432:5432'
+    environment:
+      - POSTGRES_PASSWORD=$PG_PASSWORD
+      - POSTGRES_USER=$PG_USER
+      - POSTGRES_DATABASE=$PG_DATABASE
+      - POSTGRES_PORT=$PG_PORT
+      - POSTGRES_HOSTNAME=$PG_HOSTNAME
+    volumes:
+      - postgres-volume:/usr/data/postgres
+  redis-server:
+    image: cjberry/redis-obs
+    container_name: obs-redis
+    ports:
+      - '6379:6379'
+    env_file:
+      - docker.env
+    volumes:
+      - redis-volume:/usr/data/redis
+volumes:
+  redis-volume:
+  postgres-volume:
