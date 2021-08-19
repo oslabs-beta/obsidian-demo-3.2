@@ -6,7 +6,7 @@ import {
 } from 'https://deno.land/x/oak@v6.0.1/mod.ts';
 
 // import { ObsidianRouter, gql } from '../../obsidian/mod.ts'
-import { ObsidianRouter, gql } from "https://raw.githubusercontent.com/oslabs-beta/obsidian/55ca6451822a2ca0867fc2706e5dc6496696d74f/mod.ts" //this is mode from raw dev mod.ts
+import { ObsidianRouter, gql } from "https://deno.land/x/obsidian@v3.2.0/mod.ts" //this is mode from raw dev mod.ts
 // import { ObsidianRouter, gql } from 'https://deno.land/x/obsidian/mod.ts';
 
 //'https://deno.land/x/obsidian/mod.ts';
