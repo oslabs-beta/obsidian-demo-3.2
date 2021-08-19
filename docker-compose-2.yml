@@ -14,7 +14,7 @@ services:
       - postgres-server
       - redis-server
   postgres-server:
-    image: cjberry/postgres-obs
+    image: obsidiandocker/postgres
     container_name: obs-postgres
     env_file:
       - docker.env
@@ -29,7 +29,7 @@ services:
     volumes:
       - postgres-volume:/usr/data/postgres
   redis-server:
-    image: cjberry/redis-obs
+    image: obsidiandocker/redis
     container_name: obs-redis
     ports:
       - '6379:6379'
